@@ -5,22 +5,19 @@
 #include <termio.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <pthread.h>
 #define rawNum 20
 
-void badSign(){
-    switch(fork()){
-        case -1 :
-            perror("fork()!");
-        case 0 :
-            gotoxy(25,0);
+void * fe(void * aa){
+    gotoxy(25,0);
+            pthread_detach(pthread_self());
             printf("잘못 누르셨습니다\n");
             sleep(1);
-        default :
-            wait(NULL);
-            gotoxy(25,0);
-            printf("                       ");
-
-    
-
-    }
+    gotoxy(25,0);
+            printf("                 ");
+            pthread_exit(NULL);
+}
+void badSign(){
+    pthread_t bad;
+    pthread_create(&bad,NULL,fe,NULL);
 }

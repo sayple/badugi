@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "cursorCon.h"
-#define rawNum 20
+#define rawNum 17
 void mapSetUp(){
     nclear();                                    
     printf("┌");
