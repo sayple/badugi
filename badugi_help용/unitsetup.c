@@ -7,7 +7,7 @@
 #define USER '1'
 #define rawNum 20
 
-void unitSetUp(char* map){
+void unitSetUp(int fd, char* map){
     struct termio tbuf, oldtbuf;
     if(ioctl(0, TCGETA, &tbuf) == -1) { // 현재터미널모드
         perror("ioctl");    exit(1);
